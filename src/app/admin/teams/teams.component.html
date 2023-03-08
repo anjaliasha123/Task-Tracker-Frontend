@@ -1,0 +1,33 @@
+<div class="divteams">
+    <div *ngFor="let team of teams">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{team.teamName}}</h5>
+                <p style="color:darkgray;">View, add or remove members</p>
+                <div class="buttons">
+                    <a class="btn btn-outline-primary" (click)="onClick(team)">View</a><br>
+                    <a class="btn btn-outline-success" (click)="onAdd(team)">Add</a><br>
+                    <a class="btn btn-outline-danger" (click)="onRemove(team)">Remove</a><br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- View Team Members -->
+<div class="view-team" *ngIf="viewTeamStatus">
+    <h1>Team Members</h1>
+<section *ngIf="members.length > 0">
+    <h5>Team: {{name}}</h5>
+    <app-team-deatils [members]="members" (sendStatus)="clearMembers($event)"></app-team-deatils>
+</section>
+<span *ngIf="members.length == 0">No members to show</span>
+</div>
+<div class="add-member" *ngIf="addMemberStatus">
+    <h1>Add Member for team {{addMemberTeamName}}</h1>
+    <div class="input-group mb-3" style="width: 500px;">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="addMember()">Add
+            Member</button>
+        <input type="number" class="form-control" [(ngModel)]="addMemberEmpId">
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="input-group mb-3" style="width: 500px;">
+    <input type="text" class="form-control" placeholder="Employee Username" [(ngModel)]="userName">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="searchMember()">Search Member</button>
+</div>
+<!-- User View -->
+<h4>Users View</h4>
+
+    <div class="card" style="width: 18rem;" *ngIf="users !== undefined">
+        <div class="card-body">
+            <h5 class="card-title">{{users.username}}</h5>
+            <p style="color:darkgray;">View details, add tasks, update task status or delete user</p>
+            <div class="buttons" style="">
+                <a class="btn btn-outline-primary" (click)="enableViewTasks()">View</a><br>
+                <a class="btn btn-outline-success" (click) = "enableAddTasks()">Add Tasks</a><br>
+                <a class="btn btn-outline-dark" (click) = "onUpdate()">Update Status</a><br>
+                <a class="btn btn-outline-danger" (click)="onDelete()">Delete User</a><br>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="users === undefined">No users to view</div>
+
+    <!-- Add Tasks -->
+    <div class="add-tasks" *ngIf="eat">
+        <h5>Add task</h5>
+        <form [formGroup]="addTaskForm" (ngSubmit)="addTasks()">
+            <div class="mb-3" style="width:500px;">
+                <label for="username" class="form-label">TASK NAME</label>
+                <input type="text" class="form-control" formControlName="taskName">
+                <label for="status" class="form-label">COMPLETION STATUS</label>
+                <input type="text" class="form-control" formControlName="status"><br><br>
+                <button type="submit" class="btn btn-primary">Add Tasks</button>
+            </div>
+            
+        </form>
+    </div>
+    <!-- View All Tasks -->
+    <div *ngIf="vt">
+        <h4>Tasks</h4>
+        <div style="width: 500px;">
+            <ul class="list-group list-group" *ngFor="let t of tasks">
+                <li class="list-group-item">
+                    {{t.taskName}}
+                    <button *ngIf="t.completed === false" type="button" class="btn btn-danger">NOT COMPLETED</button>
+                    <button *ngIf="t.completed" type="button" class="btn btn-success">COMPLETED</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Update Status of Task -->
+    <div *ngIf="us">
+        <h4>Update Status</h4>
+        <form [formGroup]="updateStatusForm" (ngSubmit)="updateStatus()">
+            <div class="mb-3" style="width:500px;">
+                <label for="taskname" class="form-label">TASK NAME</label>
+                <input type="text" class="form-control" formControlName="taskName">
+                <label for="status" class="form-label">COMPLETION STATUS</label>
+                <input type="text" class="form-control" formControlName="status"><br><br>
+                <button type="submit" class="btn btn-primary">Change Status</button>
+            </div>
+            
+        </form>
+    </div>

@@ -1,0 +1,45 @@
+<h1><span class="badge bg-secondary">Home Page</span></h1>
+<section>
+    <h3><span class="badge bg-secondary">Tasks</span></h3>
+    <div style="display: flex;" *ngIf="tasks.length >0">
+        <div class="card" *ngFor="let t of tasks">
+            <div class="card-body">
+                <h5 class="card-title">{{t.taskName}}</h5>
+                <p class="card-text" [ngClass]="t.completed?'completed':'notCompleted'">Completion status:
+                    {{t.completed}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div style="display: flex;" *ngIf="tasks.length === 0">
+        No tasks to show
+    </div>
+
+</section>
+<section>
+    <h3><span class="badge bg-secondary">Teams</span></h3>
+    <div *ngIf="teams.length > 0">
+        <div class="accordion" id="accordionExample" *ngFor="let team of teams">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        {{team.teamName}}
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="list-group" *ngFor="let member of team.members">
+                            <li class="list-group-item">{{member}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div *ngIf="teams.length === 0">No teams to view</div>
+
+
+</section>

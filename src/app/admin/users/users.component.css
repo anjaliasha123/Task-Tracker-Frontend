@@ -1,0 +1,5 @@
+.divusers {
+    display: grid !important;
+    gap: 30px !important;
+    grid-template-columns: auto auto auto !important;
+}

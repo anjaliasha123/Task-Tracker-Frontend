@@ -1,0 +1,21 @@
+<h1><span class="badge bg-secondary">CREATE A NEW USER</span></h1>
+<form [formGroup]="createUser" (ngSubmit)="registerUser()">
+    <div class="mb-3">
+        <label for="username" class="form-label">USERNAME</label>
+        <input type="text" class="form-control" formControlName="username">
+        <span style="color: red;"
+            *ngIf="createUser.get('username').invalid && createUser.get('username').touched">Username is
+            required</span><br>
+        <label for="empid" class="form-label">EMPLOYEE ID</label>
+        <input type="number" class="form-control" formControlName="empid">
+        <span style="color: red;"
+            *ngIf="createUser.get('empid').invalid && createUser.get('empid').touched">Employee ID is
+            required</span><br>
+
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="isAdmin">
+        <label class="form-check-label" for="exampleCheck1">ADMIN</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="createUser.invalid">Register User</button>
+</form>

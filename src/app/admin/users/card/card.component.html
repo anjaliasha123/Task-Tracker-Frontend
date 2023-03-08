@@ -1,0 +1,7 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body" [ngClass]="adminStatus? 'admin':'nonadmin'">
+      <h5 class="card-title">USERNAME: {{userName}}</h5>
+      <h5 class="card-title">EMP ID: {{empId}}</h5>
+      <h5 class="card-title admin" *ngIf="adminStatus">ADMIN</h5>
+    </div>
+  </div>

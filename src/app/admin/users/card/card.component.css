@@ -1,0 +1,8 @@
+.card-body.admin {
+    box-shadow: black 2px 2px 2px;
+    background: blueviolet;
+    color: white;
+}
+.admin{
+    color: red;
+}

@@ -1,0 +1,18 @@
+.completed{
+    color: green;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.notCompleted{
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.card-title{
+    text-transform: uppercase;
+}
+.card{
+    width: 18rem;
+    height: 7rem;
+    margin: 1rem;
+}

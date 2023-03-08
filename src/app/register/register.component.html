@@ -1,0 +1,23 @@
+<h3>Register here</h3>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="mb-3">
+        <label for="username" class="form-label">USERNAME</label>
+        <input type="text" class="form-control" formControlName="username">
+        <span style="color: red;" *ngIf="registerForm.get('username').invalid && registerForm.get('username').touched">Username is required</span><br>
+        <label for="password" class="form-label">PASSWORD</label>
+        <input type="password" class="form-control" formControlName="password">
+        <span style="color: red;" *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">Password is required</span><br>
+        <label for="password" class="form-label">CONFIRM PASSWORD</label>
+        <input type="password" class="form-control" formControlName="confirmPassword">
+        <label for="empid" class="form-label">EMPLOYEE ID</label>
+        <input type="number" class="form-control" formControlName="empid">
+        <span style="color: red;" *ngIf="registerForm.get('empid').invalid && registerForm.get('empid').touched">Employee ID is required</span><br>
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="isAdmin">
+      <label class="form-check-label" for="exampleCheck1">ADMIN</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+    <span style="color: red;" *ngIf="registerForm.errors">Passwords don't match</span>
+  </form>

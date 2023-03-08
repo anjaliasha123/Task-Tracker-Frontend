@@ -1,0 +1,7 @@
+<div class="divusers">
+    <div *ngFor="let user of users" >
+        <app-card [userName]="user.username" [empId]="user.empId" [adminStatus]="user.admin"></app-card>
+    </div>
+</div>
+
+
